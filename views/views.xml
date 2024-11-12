@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View (List View) -->
+    <record id="view_material_tree" model="ir.ui.view">
+        <field name="name">material.material.tree</field>
+        <field name="model">material.material</field>
+        <field name="arch" type="xml">
+            <tree string="Materials">
+                <field name="material_code"/>
+                <field name="material_name"/>
+                <field name="material_type"/>
+                <field name="material_buy_price"/>
+                <field name="related_supplier"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="view_material_form" model="ir.ui.view">
+        <field name="name">material.material.form</field>
+        <field name="model">material.material</field>
+        <field name="arch" type="xml">
+            <form string="Material">
+                <sheet>
+                    <group>
+                        <field name="material_code"/>
+                        <field name="material_name"/>
+                        <field name="material_type"/>
+                        <field name="material_buy_price"/>
+                        <field name="related_supplier"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action untuk membuka view Material -->
+    <record id="action_material_material" model="ir.actions.act_window">
+        <field name="name">Materials</field>
+        <field name="res_model">material.material</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_material_tree"/>
+    </record>
+
+    <!-- Menu Item untuk Material -->
+    <menuitem id="menu_material_root" name="Materials" sequence="1"/>
+    <menuitem id="menu_material" name="Materials" parent="menu_material_root" action="action_material_material" sequence="10"/>
+</odoo>
